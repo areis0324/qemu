@@ -1955,7 +1955,7 @@ static int ram_save_init_globals(void)
         bitmap_set(migration_bitmap_rcu->unsentmap, 0, ram_bitmap_pages);
     }
 
-    migration_bitmap_init(migration_bitmap);
+    migration_bitmap_init(migration_bitmap_rcu->bmap);
 
     memory_global_dirty_log_start();
     migration_bitmap_sync();
