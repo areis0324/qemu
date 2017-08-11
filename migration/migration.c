@@ -279,6 +279,13 @@ static void deferred_incoming_migration(Error **errp)
     deferred_incoming = true;
 }
 
+bool migrate_bypass_shared_memory(void)
+{
+    MigrationState *s;
+    s = migrate_get_current();
+    return s->enabled_capabilities[MIGRATION_CAPABILITY_BYPASS_SHARED_MEMORY];
+}
+
 /* Request a range of pages from the source VM at the given
  * start address.
  *   rbname: Name of the RAMBlock to request the page in, if NULL it's the same

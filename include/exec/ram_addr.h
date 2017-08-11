@@ -39,6 +39,9 @@ struct RAMBlock {
     size_t page_size;
 };
 
+// if the share=on is provided
+bool qemu_ram_is_shared(RAMBlock *rb);
+
 static inline bool offset_in_ramblock(RAMBlock *b, ram_addr_t offset)
 {
     return (b && b->host && offset < b->used_length) ? true : false;
